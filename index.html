@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Life Architect — Architect Your Life</title>
+<title>Life Architect â€” Architect Your Life</title>
 <meta name="description" content="One app for tasks, habits, routines, journal and AI. Built for people tired of juggling 5 apps. Join the waitlist.">
-<meta property="og:title" content="Life Architect — Architect Your Life">
+<meta property="og:title" content="Life Architect â€” Architect Your Life">
 <meta property="og:description" content="Tasks, habits, routines, journal and AI in one beautiful private app.">
 <meta property="og:url" content="https://lifearchitect.pages.dev">
 <meta name="theme-color" content="#e4e7e8">
@@ -13,16 +13,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #e4e7e8;
+    --bg: #E4E7E8; /* Mockup specific light gray */
     --surface: #ffffff;
-    --purple: #5c27fe;
-    --purple-light: #7c3aed;
-    --green: #6e9323;
-    --yellow: #f7e81d;
-    --white: #000000; /* Reversing white/black logic for light background */
-    --text: #080c14;
-    --muted: rgba(8,12,20,0.6);
-    --subtle: rgba(8,12,20,0.05);
+    --purple: #5C27FE; /* Title purple */
+    --purple-light: #6331FD; /* CTA purple */
+    --badge-green: #6E9323; /* Coming soon pill */
+    --badge-yellow: #F7E81D; /* Coming soon text */
+    --text: #080C14;
+    --muted: #AFB5BE;
+    --border: rgba(15, 23, 42, 0.08);
   }
 
   html, body {
@@ -55,25 +54,7 @@
     line-height: 1.6;
   }
 
-  .mountain-canvas {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 0;
-    pointer-events: none;
-    height: 40vh; /* Adjust height for PC */
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  .mtn-svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-    /* Use xMidYMax slice to treat it like object-fit: cover anchored to bottom */
-  }
+  /* Mountains Removed Per User Direction */
 
   section {
     position: relative;
@@ -89,28 +70,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centered mid-screen */
     text-align: center;
-    padding: 120px 24px 80px;
-    z-index: 3; /* More prominence */
+    padding: 120px 24px 120px;
+    z-index: 3;
+    overflow: hidden;
   }
 
-  /* ── Nav ── */
+  /* â”€â”€ Nav â”€â”€ */
   nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
-    padding: 20px 40px;
+    padding: 16px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg);
-    opacity: 0.95;
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--subtle);
-    overflow: hidden;
+    border-bottom: 1px solid var(--border);
   }
 
   .nav-brand {
@@ -139,9 +119,9 @@
     border: none;
     padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 32px);
     border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: clamp(12px, 1.5vw, 14px);
-    font-weight: 500;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
@@ -150,7 +130,7 @@
 
   .nav-cta:hover { opacity: 0.85; }
 
-  /* ── Sections ── */
+  /* â”€â”€ Sections â”€â”€ */
   section {
     position: relative;
     z-index: 2;
@@ -176,20 +156,17 @@
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: var(--green);
-    color: var(--yellow);
-    border: none;
+    background: var(--badge-green);
+    color: var(--badge-yellow);
     border-radius: 100px;
-    padding: 12px 36px;
+    padding: 10px 32px;
     font-family: 'Fredoka', sans-serif;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 24px;
-    letter-spacing: 0.05em;
-    animation: fadeUp 0.8s ease both;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    letter-spacing: 0.1em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
   @keyframes pulse {
@@ -197,28 +174,30 @@
     50% { opacity: 0.4; }
   }
 
+  /* â”€â”€ Aesthetic Overhaul Refresh â”€â”€ */
   .hero-title {
     font-family: 'Fredoka', sans-serif;
-    font-size: clamp(52px, 12vw, 140px);
-    font-weight: 700;
-    line-height: 0.85;
-    letter-spacing: -0.02em;
+    font-size: clamp(60px, 16vw, 160px); /* Bolder, larger impact */
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
     margin-bottom: 24px;
-    animation: fadeUp 0.8s ease 0.1s both;
     color: var(--purple);
-    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    filter: drop-shadow(0 4px 10px rgba(93, 56, 255, 0.1));
   }
 
   .hero-sub {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 300;
-    color: rgba(255,255,255,0.2);
+    font-size: clamp(42px, 8vw, 84px);
+    font-weight: 400;
+    color: var(--text);
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     margin-bottom: 48px;
-    animation: fadeUp 0.8s ease 0.15s both;
+    font-style: italic;
   }
 
   .hero-desc {
@@ -242,22 +221,22 @@
   .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: var(--purple);
     color: white;
-    padding: clamp(14px, 2.5vw, 18px) clamp(32px, 4vw, 48px);
-    border-radius: 100px;
-    font-size: clamp(14px, 1.8vw, 16px);
-    font-weight: 500;
+    padding: 14px 40px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    letter-spacing: 0.02em;
-    box-shadow: 0 0 40px rgba(92, 39, 254, 0.3);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
   }
 
   .btn-primary:hover {
+    background: var(--purple-light);
     transform: translateY(-2px);
-    box-shadow: 0 0 60px rgba(139,92,246,0.4);
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
   }
 
   .hero-note {
@@ -271,7 +250,7 @@
     50% { opacity: 1; transform: scaleY(1.2); }
   }
 
-  /* ── Problem section ── */
+  /* â”€â”€ Problem section â”€â”€ */
   .problem {
     padding: 120px 24px;
     text-align: center;
@@ -305,7 +284,7 @@
     font-weight: 300;
   }
 
-  /* ── Features ── */
+  /* â”€â”€ Features â”€â”€ */
   .features {
     padding: 80px 24px 120px;
     max-width: 1100px;
@@ -366,26 +345,22 @@
   }
 
   .feature-visual-organic {
-    width: 380px;
-    height: 380px;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(110, 147, 35, 0.1);
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Organic amoeba shape */
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.05);
-    animation: morphAnimation 10s ease-in-out infinite;
+    padding: 0;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.3);
     position: relative;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .feature-visual-organic:hover {
-    transform: scale(1.05) rotate(2deg);
+    transform: translateY(-8px);
     border-color: var(--purple);
-    box-shadow: 0 50px 100px rgba(92, 39, 254, 0.1);
   }
 
   @keyframes morphAnimation {
@@ -482,7 +457,7 @@
     font-weight: 300;
   }
 
-  /* ── Life Tree feature — full width ── */
+  /* â”€â”€ Life Tree feature â€” full width â”€â”€ */
   .feature-card.hero-feature {
     grid-column: 1 / -1;
     display: grid;
@@ -506,26 +481,65 @@
     filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
   }
 
-  /* Visual Animations */
-  @keyframes lineDraw { 
-    0% { stroke-dashoffset: 1000; }
-    100% { stroke-dashoffset: 0; }
-  }
-
-  @keyframes floatPulse {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
-    50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
-  }
-
-  /* Command Line Visual */
-  .cmd-line {
-    font-family: 'DM Sans', monospace;
-    font-size: 13px;
-    color: var(--purple-light);
+  .feature-presentation-panel {
+    background: #fdfdfd;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+  .feature-presentation-inner {
     width: 100%;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Perplexity-style Command Bar UI */
+  .cmd-bar-ui {
+    width: 100%;
+    max-width: 600px;
+    background: #f1f5f9;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 16px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  /* Sleek Habit Grid */
+  .habit-grid-pro {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    gap: 4px;
+    padding: 40px;
+    width: 100%;
+  }
+
+  .habit-cell-pro {
+    aspect-ratio: 1;
+    background: #e2e8f0;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.02);
+  }
+  .habit-cell-pro.active {
+    background: var(--purple);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+    border-color: rgba(139, 92, 246, 0.6);
   }
 
   .cmd-line g, .cmd-line span { color: var(--text) !important; opacity: 0.6; }
@@ -609,7 +623,7 @@
   }
 
 
-  /* ── Waitlist ── */
+  /* â”€â”€ Waitlist â”€â”€ */
   .waitlist {
     padding: 120px 24px;
     text-align: center;
@@ -735,7 +749,7 @@
     margin-top: 16px;
   }
 
-  /* ── Footer ── */
+  /* â”€â”€ Footer â”€â”€ */
   footer {
     border-top: 1px solid var(--subtle);
     padding: 40px 24px;
@@ -744,7 +758,7 @@
 
   .footer-brand {
     font-size: 13px;
-    color: rgba(255,255,255,0.2);
+    color: var(--muted);
     margin-bottom: 8px;
   }
 
@@ -757,14 +771,14 @@
 
   .footer-link {
     font-size: 12px;
-    color: rgba(255,255,255,0.2);
+    color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
   }
 
   .footer-link:hover { color: var(--purple-light); }
 
-  /* ── Animations ── */
+  /* â”€â”€ Animations â”€â”€ */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -781,7 +795,7 @@
     transform: translateY(0);
   }
 
-  /* ── Responsive Overhaul ── */
+  /* â”€â”€ Responsive Overhaul â”€â”€ */
   @media (max-width: 1024px) {
     .feature-row { gap: 40px; }
     .feature-visual-organic { width: 340px; height: 340px; }
@@ -789,44 +803,450 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 12px 20px; }
+    nav {
+      left: 12px;
+      right: 12px;
+      padding: 10px 16px;
+      margin-top: 8px;
+    }
     .hero { padding: 80px 20px 60px; }
-    .hero-title { font-size: clamp(48px, 15vw, 84px); }
-    .hero-sub { font-size: clamp(28px, 8vw, 42px); }
-    
-    .feature-row, .feature-row:nth-child(even) {
-      flex-direction: column;
-      gap: 32px;
-      margin-bottom: 100px;
-      text-align: center;
+    .hero-title { font-size: clamp(34px, 9vw, 54px); }
+    .feature-grid {
+      grid-template-columns: 1fr;
     }
-
-    .features::before, .path-dot { display: none; } /* Hide path on small mobile */
-
-    .feature-visual-organic {
-      width: 280px;
-      height: 280px;
-      padding: 30px;
-      margin: 0 auto;
+    .feature-overview {
+      padding: 72px 20px 96px;
     }
-
-    .feature-num { font-size: 60px; margin-bottom: -20px; }
-    .feature-name-organic { font-size: 32px; }
-    .feature-desc-organic { font-size: 16px; }
-
-    .mountain-canvas { height: 25vh; } /* Shorter mountain on mobile */
-    
+    .feature-overview-card {
+      padding: 24px;
+      border-radius: 28px;
+    }
+    .feature-overview-text {
+      font-size: 16px;
+    }
     .waitlist-title { font-size: clamp(32px, 10vw, 48px); }
     .waitlist-sub { font-size: 16px; margin-bottom: 32px; }
     .form-btn { width: 100%; padding: 18px 32px; font-size: 16px; }
   }
 
   @media (max-width: 480px) {
-    .hero-title { font-size: 52px; }
-    .feature-visual-organic { width: 240px; height: 240px; }
-    .feature-num { font-size: 48px; }
-    .feature-name-organic { font-size: 28px; }
+    .hero-title { font-size: 30px; }
+    .feature-overview-title { font-size: 30px; }
+    .mini-feature-title { font-size: 22px; }
   }
+  .gallery-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(40px);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    padding: 40px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .gallery-overlay.active { display: flex; animation: fadeInGlass 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
+  @keyframes fadeInGlass { 0% { opacity:0; transform: scale(1.1); } 100% { opacity:1; transform: scale(1); } }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .close-gallery {
+    cursor: pointer;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  .close-gallery:hover { background: var(--purple); border-color: var(--purple); color: white; }
+
+  .gallery-item {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 120px;
+    text-align: center;
+  }
+  .gallery-item h4 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: var(--purple-light);
+    letter-spacing: 0.02em;
+  }
+  .gallery-img-wrap {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+  }
+  .gallery-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .nav-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn-gallery {
+    cursor: pointer;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: transparent;
+    transition: 0.3s;
+  }
+  .btn-gallery:hover { background: rgba(255,255,255,0.05); border-color: var(--text); }
+
+  /* Premium visual overrides (layout only, keep brand colors) */
+  :root {
+    --bg: #E4E7E8;
+    --surface: #ffffff;
+    --purple: #5C27FE;
+    --purple-light: #6331FD;
+    --badge-green: #6E9323;
+    --badge-yellow: #F7E81D;
+    --text: #080C14;
+    --muted: #AFB5BE;
+    --border: rgba(15, 23, 42, 0.08);
+    --subtle: rgba(15, 23, 42, 0.05);
+  }
+
+  body {
+    position: relative;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .hero {
+    padding: 140px 24px 120px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(52px, 10vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+    color: var(--purple);
+    text-transform: uppercase;
+    filter: drop-shadow(0 6px 12px rgba(92, 39, 254, 0.2));
+    white-space: nowrap;
+  }
+
+  .hero-sub {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-desc {
+    font-size: clamp(16px, 2vw, 18px);
+    max-width: 620px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    margin-top: 6px;
+  }
+
+  .btn-primary {
+    background: var(--purple-light);
+    color: #ffffff;
+    padding: 14px 36px;
+    border-radius: 999px;
+    box-shadow: 0 14px 30px rgba(92, 39, 254, 0.32);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(92, 39, 254, 0.4);
+  }
+
+  nav {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(18px);
+    border-radius: 999px;
+    left: 24px;
+    right: 24px;
+    width: auto;
+    margin-top: 10px;
+    padding: 14px 26px;
+  }
+
+  .nav-cta {
+    background: var(--purple-light);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(92, 39, 254, 0.28);
+  }
+
+  .nav-cta::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+  }
+
+  .btn-gallery {
+    border-color: rgba(15, 23, 42, 0.12);
+    background: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+  }
+
+  .nav-brand .nav-name {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-actions {
+    gap: 14px;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(110, 147, 35, 0.16);
+    border: 1px solid rgba(110, 147, 35, 0.28);
+    letter-spacing: 0.18em;
+    color: var(--badge-yellow);
+  }
+
+  .waitlist {
+    max-width: 740px;
+    padding: 110px 24px 80px;
+  }
+
+  .waitlist-title {
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--text);
+  }
+
+  .waitlist-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .waitlist-highlight {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(92, 39, 254, 0.12);
+    border: 1px solid rgba(92, 39, 254, 0.35);
+    color: var(--purple);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .form-btn {
+    background: var(--purple-light);
+    color: #ffffff;
+    border-radius: 999px;
+    box-shadow: 0 14px 30px rgba(92, 39, 254, 0.32);
+  }
+
+  .form-btn:hover {
+    box-shadow: 0 18px 40px rgba(92, 39, 254, 0.4);
+  }
+
+  .hero-fineprint {
+    display: none;
+  }
+
+  .feature-overview {
+    padding: 88px 24px 120px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .feature-overview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+    padding: 36px;
+  }
+
+  .feature-overview-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .feature-overview .section-label {
+    background: rgba(110, 147, 35, 0.18);
+    border: 1px solid rgba(110, 147, 35, 0.32);
+    color: var(--badge-yellow);
+  }
+
+  .feature-overview-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 800;
+    color: var(--purple);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .feature-overview-text {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .mini-feature {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px 18px;
+    text-align: left;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.04);
+  }
+
+  .mini-feature-num {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--purple-light);
+    margin-bottom: 14px;
+  }
+
+  .mini-feature-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 22px;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .mini-feature-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+
+  @media (max-width: 1200px) {
+    .feature-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: clamp(32px, 9vw, 44px);
+  }
+  .hero {
+    min-height: 88vh;
+    padding: 96px 18px 72px;
+  }
+  .hero-badge {
+    font-size: 11px;
+    padding: 8px 20px;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+  }
+  .hero-sub {
+    font-size: clamp(24px, 8vw, 34px);
+    margin-bottom: 14px;
+  }
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .btn-primary {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 28px;
+  }
+  .feature-overview {
+    padding: 72px 18px 96px;
+  }
+  .feature-overview-card {
+    padding: 24px;
+  }
+  .waitlist {
+    padding: 84px 18px 72px;
+  }
+  .waitlist-title {
+    font-size: clamp(28px, 9vw, 40px);
+  }
+  .waitlist-sub {
+    font-size: 15px;
+  }
+}
 </style>
 </head>
 <body>
@@ -837,302 +1257,145 @@
     <img src="assets/logo.png" alt="Life Architect Logo" class="nav-logo" style="width: 32px; height: 32px; object-fit: contain;">
     <span class="nav-name">Life Architect</span>
   </a>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSem1OJkIXfKfblDsRb8hy9o9nUMdNVuFKCn49_Om5W8H4vyJA/viewform" class="nav-cta" style="background: var(--purple);">Join Waitlist</a>
+  <div class="nav-actions">
+    <button class="btn-gallery" id="openGallery">Gallery</button>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSem1OJkIXfKfblDsRb8hy9o9nUMdNVuFKCn49_Om5W8H4vyJA/viewform" class="nav-cta" style="background: var(--purple);">Join Waitlist</a>
+  </div>
 </nav>
 
-<!-- Hero -->
+<!-- Gallery Overlay -->
+<div class="gallery-overlay" id="galleryOverlay">
+  <div class="gallery-header">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <img src="assets/logo.png" style="width:32px; height:32px; object-fit:contain;">
+      <h3 style="font-size:20px; font-weight:600; font-family:'Outfit';">Product Showcase</h3>
+    </div>
+    <button class="close-gallery" id="closeGallery">Close (ESC)</button>
+  </div>
+  <div class="gallery-item reveal">
+    <h4>Life Intelligence Dashboard</h4>
+    <div class="gallery-img-wrap">
+      <img src="assets/dashboard-ui.png" alt="Life Intelligence Dashboard Full UI">
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <h4>Life Architecture Tree</h4>
+    <div class="gallery-img-wrap">
+      <img src="assets/life-tree-ui.png" alt="Life Architecture Tree Full UI">
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <h4>Smart Tasks Architecture</h4>
+    <div class="gallery-img-wrap">
+      <img src="assets/tasks-ui.png" alt="Smart Tasks Full UI">
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <h4>Dynamic Routines Engine</h4>
+    <div class="gallery-img-wrap">
+      <img src="assets/routine-ui.png" alt="Dynamic Routines Full UI">
+    </div>
+  </div>
+  </div>
 <section class="hero">
-  <!-- Mountain background (Fixed to viewport) -->
-  <div class="mountain-canvas">
-    <svg class="mtn-svg" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice">
-      <defs>
-        <linearGradient id="mtnGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#1a1c22" />
-          <stop offset="100%" stop-color="#080c14" />
-        </linearGradient>
-        <linearGradient id="mtnGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#5c27fe" />
-          <stop offset="100%" stop-color="#3c1aa3" />
-        </linearGradient>
-        <linearGradient id="hazeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="var(--bg)" stop-opacity="0" />
-          <stop offset="100%" stop-color="var(--bg)" stop-opacity="1" />
-        </linearGradient>
-      </defs>
-      
-      <!-- Back Distant Peaks (Realistic Jagged) -->
-      <path d="M0 300 L100 220 L180 260 L300 150 L420 230 L550 120 L680 240 L800 100 L950 220 L1100 140 L1250 250 L1440 180 V400 H0 Z" fill="#b0b8c4" opacity="0.2" />
-      
-      <!-- Middle Peaks -->
-      <path d="M-50 400 L150 250 L300 320 L450 180 L650 300 L850 160 L1050 280 L1250 140 L1440 260 L1500 400 Z" fill="#717a8a" opacity="0.4" />
-      
-      <!-- Dark Sharp Peaks -->
-      <path d="M0 400 L200 240 L400 360 L600 200 L800 340 L1050 220 L1250 350 L1440 280 V400 H0 Z" fill="url(#mtnGrad1)" />
-      
-      <!-- Purple Rolling Mountains -->
-      <path d="M0 400 C200 280 500 450 800 320 C1100 200 1300 450 1500 350 V400 H0 Z" fill="url(#mtnGrad2)" />
-      
-      <!-- Foreground Green Hills -->
-      <path d="M-100 400 C200 350 600 450 900 380 C1200 320 1400 420 1600 380 V400 H-100 Z" fill="#6e9323" />
-      
-      <!-- Atmospheric Haze (Bottom Fade) -->
-      <rect width="100%" height="100" y="300" fill="url(#hazeGrad)" opacity="0.5" />
-      
-      <!-- Floating Accents (Detailed Leaves) -->
-      <g opacity="0.6">
-        <circle cx="1180" cy="320" r="4" fill="#6e9323" />
-        <circle cx="1210" cy="340" r="6" fill="#6e9323" />
-        <circle cx="150" cy="360" r="5" fill="#5c27fe" />
-      </g>
-    </svg>
-  </div>
-  <div class="hero-badge">
-    Coming Soon
-  </div>
-  <h1 class="hero-title">Life-Architect</h1>
-  <div class="hero-sub" style="color: var(--text); opacity: 0.3;">Finally.</div>
-  <p class="hero-desc" style="color: var(--muted);">Tasks, habits, routines, journal and AI — all in one beautiful private app. Built for people tired of juggling 5 apps to live one life.</p>
-  <div class="hero-actions">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSem1OJkIXfKfblDsRb8hy9o9nUMdNVuFKCn49_Om5W8H4vyJA/viewform" class="btn-primary" style="background: var(--purple); box-shadow: 0 10px 30px rgba(92, 39, 254, 0.3);">
+  <div class="hero-content">
+  <div class="hero-badge">LAUNCHING 19TH APRIL</div>
+  <h1 class="hero-title" style="margin-left: auto; margin-right: auto;">Life-Architect</h1>
+  <div class="hero-sub">Finally.</div>
+  <p class="hero-desc" style="max-width: 600px; font-weight: 400; line-height: 1.7; margin-left: auto; margin-right: auto; margin-bottom: 32px;">Tasks, habits, routines, journal and AI -- all in one beautiful private app. Built for people tired of juggling 5 apps to live one life.</p>
+  <div class="hero-actions" style="margin-top: 32px; align-self: center;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSem1OJkIXfKfblDsRb8hy9o9nUMdNVuFKCn49_Om5W8H4vyJA/viewform" class="btn-primary" style="padding: 20px 48px; font-size: 18px; border-radius: 100px;">
       ✦ Join the Waitlist
     </a>
   </div>
-</section>
+  </div>
 
-<!-- Problem -->
-<section class="problem reveal">
-  <div class="section-label">The Problem</div>
-  <h2 class="problem-title">You're not unproductive.<br>You're just using the wrong tools.</h2>
-  <p class="problem-text">Notion for notes. Todoist for tasks. Habitica for habits. Google Calendar for routines. A random notes app for journaling. Five apps, five logins, five monthly fees — and still feeling scattered. There had to be a better way.</p>
+  <!-- Re-drawn Mountain Layers for Exact Mockup Removed per user direction -->
 </section>
 
 <!-- Features -->
-<section class="features">
-  <div class="features-header reveal">
-    <div class="section-label">The Ascent</div>
-    <h2 class="features-title" style="color: var(--purple); font-family: 'Fredoka', sans-serif;">The Path of Progress.</h2>
-  </div>
+<section class="feature-overview reveal">
+  <div class="feature-overview-card">
+    <div class="feature-overview-header">
+      <div class="section-label">Features</div>
+    <h2 class="feature-overview-title">Everything you need. Nothing you don’t.</h2>
+    <p class="feature-overview-text">Five essentials, built to work together.</p>
+    </div>
 
-  <!-- Feature 1: Life Tree -->
-  <div class="feature-row reveal">
-    <div class="path-dot"></div>
-    <div class="feature-text-organic">
-      <div class="feature-num">01</div>
-      <h3 class="feature-name-organic">Life Architecture Tree</h3>
-      <p class="feature-desc-organic">Witness your productivity grow into a living constellation. Every task completed and habit formed adds a glowing branch to your legacy. A visual masterpiece of your progress.</p>
-    </div>
-    <div class="feature-node">
-      <div class="feature-visual-organic">
-        <svg class="life-tree-visual" viewBox="0 0 280 280" fill="none">
-          <defs>
-            <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="40%" stop-color="#C4B5FD"/>
-              <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="treeGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="6" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <g class="star-field" style="opacity: 0.4;">
-            <circle cx="40" cy="50" r="1.5" fill="#5c27fe" style="animation: floatPulse 3s infinite;"/>
-            <circle cx="220" cy="30" r="1" fill="#5c27fe" style="animation: floatPulse 4s infinite 0.5s;"/>
-            <circle cx="260" cy="120" r="1.2" fill="#5c27fe" style="animation: floatPulse 3.5s infinite 1s;"/>
-            <circle cx="20" cy="180" r="1" fill="#5c27fe" style="animation: floatPulse 4.5s infinite 1.5s;"/>
-          </g>
-          <g class="tree-group">
-            <path d="M 140 140 C 120 110, 90 80, 60 40" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="1000" style="animation: lineDraw 3s forwards;" filter="url(#treeGlow)"/>
-            <path d="M 140 140 C 170 110, 200 80, 230 50" stroke="#A78BFA" stroke-width="2" stroke-dasharray="1000" style="animation: lineDraw 3.5s forwards;" filter="url(#treeGlow)"/>
-            <circle cx="60" cy="40" r="6" fill="#8B5CF6" style="animation: floatPulse 3s infinite;"/>
-            <circle cx="230" cy="50" r="6" fill="#A78BFA" style="animation: floatPulse 4s infinite 0.5s;"/>
-            <circle cx="140" cy="140" r="28" fill="#8B5CF6" opacity="0.15"/>
-            <circle cx="140" cy="140" r="20" fill="url(#coreGrad)" filter="url(#treeGlow)"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature 2: Command Bar -->
-  <div class="feature-row reveal">
-    <div class="path-dot"></div>
-    <div class="feature-text-organic">
-      <div class="feature-num">02</div>
-      <h3 class="feature-name-organic">Global Command Bar</h3>
-      <p class="feature-desc-organic">Architecture should be effortless. One shortcut to create tasks, log habits, or journal thoughts. Our AI understands your natural flow and builds your map for you.</p>
-    </div>
-    <div class="feature-node">
-      <div class="feature-visual-organic">
-        <div class="cmd-line" style="text-align: left;">
-          <div style="font-size: 16px; margin-bottom: 8px;">✦ Morning workout at 7am</div>
-          <div style="opacity: 0.5; font-size: 12px;">Adding to Habits... [DONE]</div>
-          <div style="font-size: 16px;">✦ Read 20 pages tonight <span class="cmd-cursor"></span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature 3: Smart Tasks -->
-  <div class="feature-row reveal">
-    <div class="path-dot"></div>
-    <div class="feature-text-organic">
-      <div class="feature-num">03</div>
-      <h3 class="feature-name-organic">Smart Tasks</h3>
-      <p class="feature-desc-organic">Today, Upcoming, Backlog. Priority levels. Clean, fast, and satisfying to tick off. Everything you need to manage what needs to get done.</p>
-    </div>
-    <div class="feature-node">
-      <div class="feature-visual-organic">
-        <div class="task-list-visual" style="max-width: 280px; text-align: left;">
-          <div class="task-item-vfx">
-            <div class="task-check-vfx"></div>
-            Review architect designs
-          </div>
-          <div class="task-item-vfx checked">
-            <div class="task-check-vfx"></div>
-            Morning Meditation
-          </div>
-          <div class="task-item-vfx">
-            <div class="task-check-vfx"></div>
-            Push new changes
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature 4: Habit Tracking -->
-  <div class="feature-row reveal">
-    <div class="path-dot"></div>
-    <div class="feature-text-organic">
-      <div class="feature-num">04</div>
-      <h3 class="feature-name-organic">Habit Tracking</h3>
-      <p class="feature-desc-organic">Track daily habits with streaks and 7-day history. Tap to complete. Watch your consistency build over time. Small streaks, big life.</p>
-    </div>
-    <div class="feature-node">
-      <div class="feature-visual-organic">
-        <div class="habit-grid-vfx" style="max-width: 240px;">
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled" style="opacity: 0.5;"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-          <div class="habit-cell filled"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature 5: Absolute Privacy -->
-  <div class="feature-row reveal">
-    <div class="path-dot"></div>
-    <div class="feature-text-organic">
-      <div class="feature-num">05</div>
-      <h3 class="feature-name-organic">Absolute Privacy</h3>
-      <p class="feature-desc-organic">Your data is your sanctuary. No tracking, no selling, no peering eyes. End-to-end encrypted architecture for your personal growth journey.</p>
-    </div>
-    <div class="feature-node">
-      <div class="feature-visual-organic">
-        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#5c27fe" stroke-width="1" style="filter: drop-shadow(0 0 20px rgba(92, 39, 254, 0.2));">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <circle cx="12" cy="11" r="3" />
-        </svg>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature 6: Every Screen -->
-  <div class="feature-row reveal">
-    <div class="path-dot"></div>
-    <div class="feature-text-organic">
-      <div class="feature-num">06</div>
-      <h3 class="feature-name-organic">Every Screen</h3>
-      <p class="feature-desc-organic">Seamlessly install on iOS, Android, Desktop. One unified experience that works flawlessly offline. Your architecture, wherever you go.</p>
-    </div>
-    <div class="feature-node">
-      <div class="feature-visual-organic">
-        <div class="multi-device-vfx" style="display: flex; gap: 16px; align-items: flex-end; position: relative; perspective: 1000px;">
-          <!-- Phone -->
-          <div class="device-vfx phone-vfx" style="width: 42px; height: 78px; background: rgba(255,255,255,0.05); border: 2.5px solid var(--purple); border-radius: 8px; position: relative; box-shadow: 0 10px 30px rgba(92, 39, 254, 0.2); animation: floatPulse 4s infinite ease-in-out;">
-            <div class="device-notch" style="width: 16px; height: 3px; background: var(--purple); border-radius: 0 0 4px 4px; margin: 0 auto;"></div>
-            <div class="device-lines" style="padding: 8px 4px; display: flex; flex-direction: column; gap: 4px;">
-              <div style="height: 4px; width: 80%; background: var(--purple); opacity:0.3; border-radius: 2px;"></div>
-              <div style="height: 4px; width: 60%; background: var(--purple); opacity:0.1; border-radius: 2px;"></div>
-              <div style="height: 4px; width: 90%; background: var(--purple); opacity:0.2; border-radius: 2px;"></div>
-            </div>
-          </div>
-          <!-- Tablet (Primary) -->
-          <div class="device-vfx tablet-vfx" style="width: 70px; height: 96px; background: rgba(255,255,255,0.1); border: 3px solid var(--purple); border-radius: 10px; position: relative; box-shadow: 0 15px 40px rgba(92, 39, 254, 0.3); animation: floatPulse 5s infinite 0.5s ease-in-out; z-index: 2;">
-            <div style="display: flex; height: 100%;">
-              <div style="width: 18px; border-right: 1px solid rgba(92, 39, 254, 0.2); padding: 6px 3px; display: flex; flex-direction: column; gap: 6px;">
-                 <div style="width: 6px; height: 6px; background: var(--purple); border-radius: 50%; opacity: 0.4;"></div>
-                 <div style="width: 6px; height: 6px; background: var(--purple); border-radius: 50%; opacity: 0.1;"></div>
-                 <div style="width: 6px; height: 6px; background: var(--purple); border-radius: 50%; opacity: 0.1;"></div>
-              </div>
-              <div style="flex: 1; padding: 10px 4px; display: flex; flex-direction: column; gap: 5px;">
-                 <div style="height: 8px; width: 40%; background: var(--purple); opacity:0.2; border-radius: 2px;"></div>
-                 <div style="height: 14px; width: 100%; background: rgba(92, 39, 254, 0.1); border-radius: 3px;"></div>
-                 <div style="height: 14px; width: 100%; background: rgba(92, 39, 254, 0.05); border-radius: 3px;"></div>
-              </div>
-            </div>
-          </div>
-          <!-- Desktop -->
-          <div class="device-vfx desktop-vfx" style="width: 110px; height: 68px; background: rgba(255,255,255,0.05); border: 2px solid var(--purple); border-radius: 6px; position: relative; box-shadow: 0 8px 25px rgba(92, 39, 254, 0.1); animation: floatPulse 6s infinite 0.2s ease-in-out;">
-            <div style="padding: 6px; display: flex; flex-direction: column; gap: 6px;">
-              <div style="height: 6px; width: 25%; background: var(--purple); opacity:0.4; border-radius: 2px;"></div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
-                <div style="height: 24px; background: rgba(92, 39, 254, 0.05); border-radius: 3px; border: 0.5px solid rgba(92, 39, 254, 0.1);"></div>
-                <div style="height: 24px; background: rgba(92, 39, 254, 0.05); border-radius: 3px; border: 0.5px solid rgba(92, 39, 254, 0.1);"></div>
-              </div>
-            </div>
-            <div style="position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 20px; height: 6px; background: var(--purple); border-radius: 0 0 4px 4px;"></div>
-          </div>
-        </div>
-      </div>
+    <div class="feature-grid">
+      <article class="mini-feature">
+        <div class="mini-feature-num">01</div>
+        <h3 class="mini-feature-title">Tasks</h3>
+        <p class="mini-feature-desc">Capture what matters and move through your day with a focused task flow.</p>
+      </article>
+      <article class="mini-feature">
+        <div class="mini-feature-num">02</div>
+        <h3 class="mini-feature-title">Journal</h3>
+        <p class="mini-feature-desc">Quickly log thoughts, reflections, and plans in one calm space.</p>
+      </article>
+      <article class="mini-feature">
+        <div class="mini-feature-num">03</div>
+        <h3 class="mini-feature-title">Cloud Sync</h3>
+        <p class="mini-feature-desc">Keep everything synced across your devices without losing your place.</p>
+      </article>
+      <article class="mini-feature">
+        <div class="mini-feature-num">04</div>
+        <h3 class="mini-feature-title">Routines</h3>
+        <p class="mini-feature-desc">Shape your day with routines that are easy to follow and easy to repeat.</p>
+      </article>
+      <article class="mini-feature">
+        <div class="mini-feature-num">05</div>
+        <h3 class="mini-feature-title">Habits</h3>
+        <p class="mini-feature-desc">Build consistency with habits that feel simple, visual, and rewarding.</p>
+      </article>
     </div>
   </div>
 </section>
-
-
 <!-- Waitlist -->
 <section class="waitlist" id="waitlist">
   <div class="waitlist-anim-wrap">
-    <div class="section-label reveal">Early Access</div>
-    <h2 class="waitlist-title reveal">Be first to<br><em>architect your life.</em></h2>
-    <p class="waitlist-sub reveal">Join the waitlist. Get early access on April 19, exclusive early bird benefits, and your <b>1st month free</b>.</p>
+    <h2 class="waitlist-title reveal">Join the waitlist.</h2>
+    <p class="waitlist-sub reveal"><span class="waitlist-highlight">Join the waitlist to get your 1st month free.</span></p>
 
     <div class="waitlist-form-wrap reveal">
       <button class="form-btn" id="waitlistBtn">
-        Join the Waitlist ✦
+        Join the Waitlist
         <div class="energy-burst" id="energyBurst"></div>
       </button>
     </div>
   </div>
-
-  <p style="font-size: 13px; color: var(--muted); opacity: 0.5; margin-top: 32px;">Early bird pricing · Full access · Cancel anytime</p>
 </section>
 
-<!-- Footer -->
-<footer>
-  <p class="footer-brand">Life Architect · A K6 Airlabs Product · 2026</p>
-  <div class="footer-links">
-    <a href="https://life-architect.pages.dev/privacy" class="footer-link">Privacy Policy</a>
-    <a href="https://life-architect.pages.dev/terms" class="footer-link">Terms</a>
-    <a href="mailto:rajpurohitk089@gmail.com" class="footer-link">Contact</a>
-    <a href="https://life-architect.pages.dev" class="footer-link">Open App →</a>
+<!-- Waitlist Footer Support -->
+<div class="support-wrap reveal" style="margin-top: 80px; text-align: center; width: 100%;">
+  <div style="display: inline-flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); padding: 12px 24px; border-radius: 100px; backdrop-filter: blur(10px);">
+    <span style="font-size: 13px; color: var(--muted); letter-spacing: 0.05em; font-weight: 500;">Customer Support:</span>
+    <a href="mailto:support.lifearchitect@gmail.com" style="font-size: 13px; color: var(--purple-light); text-decoration: none; font-weight: 500;">support.lifearchitect@gmail.com</a>
   </div>
+</div>
+
+<footer>
+  <p class="footer-brand" style="opacity: 0.4;">Life-ARCHITECT 2026</p>
 </footer>
 
 <script>
-  // Scroll reveal
+  // â”€â”€ Ultra-Fluid Parallax JS â”€â”€
+  let targetScroll = 0;
+  let currentScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    targetScroll = window.pageYOffset;
+  });
+  function updateParallax() {
+    // Parallax logic for mountains removed
+    requestAnimationFrame(updateParallax);
+  }
+  updateParallax();
+
+  // Scroll reveal enhancement
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1140,7 +1403,7 @@
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
 
   // Waitlist energy button
@@ -1164,6 +1427,28 @@
         waitlistBtn.style.transform = '';
       }, 1000);
     }, 600);
+  });
+  // â”€â”€ Gallery JS â”€â”€
+  const galleryOverlay = document.getElementById('galleryOverlay');
+  const openGalleryBtn = document.getElementById('openGallery');
+  const closeGalleryBtn = document.getElementById('closeGallery');
+
+  openGalleryBtn.addEventListener('click', () => {
+    galleryOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Lock background scroll
+  });
+
+  closeGalleryBtn.addEventListener('click', () => {
+    galleryOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Unlock scroll
+  });
+
+  // ESC to close
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && galleryOverlay.classList.contains('active')) {
+      galleryOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   });
 </script>
 
