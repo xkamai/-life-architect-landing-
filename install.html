@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install Life Architect – PWA Guide</title>
+<meta name="description" content="Step-by-step guide to installing Life Architect on iPhone, Android, macOS, and Windows.">
+<meta name="theme-color" content="#e4e7e8">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #E4E7E8;
+    --surface: #ffffff;
+    --purple: #5C27FE;
+    --purple-light: #6331FD;
+    --text: #080C14;
+    --muted: #AFB5BE;
+    --border: rgba(15, 23, 42, 0.08);
+    --subtle: rgba(15, 23, 42, 0.05);
+    --badge-green: #6E9323;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    touch-action: pan-y;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body::-webkit-scrollbar { display: none; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.6;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(228, 231, 232, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo { width: 30px; height: 30px; }
+  .nav-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .nav-actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: 0.2s;
+  }
+  .nav-link:hover { color: var(--purple); background: rgba(15,23,42,0.04); }
+
+  /* ── Header ── */
+  .hero {
+    padding: 180px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(92, 39, 254, 0.1);
+    color: var(--purple);
+    border: 1px solid rgba(92, 39, 254, 0.2);
+    border-radius: 100px;
+    padding: 8px 24px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(40px, 8vw, 72px);
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  
+  .hero-title span {
+    color: var(--purple);
+  }
+
+  .hero-desc {
+    font-size: clamp(16px, 2vw, 18px);
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--muted);
+  }
+
+  /* ── Install Section ── */
+  .install-container {
+    max-width: 900px;
+    margin: 0 auto 120px;
+    padding: 0 24px;
+  }
+
+  .install-card {
+    background: var(--surface);
+    border-radius: 32px;
+    border: 1px solid var(--border);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    background: rgba(250, 250, 250, 0.5);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  
+  .tab-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 24px 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .tab-btn:hover {
+    color: var(--text);
+    background: rgba(15, 23, 42, 0.02);
+  }
+  
+  .tab-btn.active {
+    color: var(--purple);
+    border-bottom-color: var(--purple);
+    background: var(--surface);
+  }
+  
+  .tab-icon {
+    font-size: 24px;
+    opacity: 0.8;
+  }
+
+  /* Tab Content */
+  .tab-content {
+    display: none;
+    padding: 64px 48px;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  .tab-content.active {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-row {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(92, 39, 254, 0.1);
+    color: var(--purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid rgba(92, 39, 254, 0.2);
+  }
+
+  .step-details {
+    flex: 1;
+    padding-top: 8px;
+  }
+
+  .step-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .step-desc {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .visual-hint {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: var(--bg);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: var(--text);
+    font-size: 15px;
+  }
+  
+  .visual-hint img {
+    height: 24px;
+    border-radius: 4px;
+  }
+
+  .start-btn-wrap {
+    margin-top: 24px;
+    text-align: center;
+  }
+  
+  .start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--purple-light);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 10px 24px rgba(92, 39, 254, 0.25);
+  }
+  .start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(92, 39, 254, 0.35);
+  }
+
+  /* ── Fat Footer ── */
+  .fat-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 48px 40px 32px;
+    margin-top: 48px;
+  }
+  .footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  .footer-col h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--purple-light); }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid var(--subtle);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copyright {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero { padding: 140px 18px 60px; }
+    .hero-title { font-size: clamp(32px, 8vw, 48px); }
+    .tab-content { padding: 40px 24px; }
+    .step-row { gap: 20px; flex-direction: column; }
+    .step-number { width: 40px; height: 40px; font-size: 16px; }
+    .step-details { padding-top: 0; }
+  }
+  @media (max-width: 600px) {
+    .fat-footer { padding: 40px 24px 24px; margin-top: 32px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo.png" alt="Life Architect Logo" class="nav-logo" style="object-fit: contain;">
+    <span class="nav-name">Life Architect</span>
+  </a>
+  <div class="nav-actions">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="https://life-architect.pages.dev/" class="nav-link" style="color:var(--purple);">Open Web App</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">Quick Setup</div>
+  <h1 class="hero-title">Install <span>Life Architect</span></h1>
+  <p class="hero-desc">Experience the full native performance. Install the app instantly without any app store hurdles.</p>
+</section>
+
+<!-- Install Guide -->
+<section class="install-container">
+  <div class="install-card">
+    
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="ios">
+        <span class="tab-icon">📱</span>
+        iPhone / iPad
+      </button>
+      <button class="tab-btn" data-tab="android">
+        <span class="tab-icon">🤖</span>
+        Android
+      </button>
+      <button class="tab-btn" data-tab="mac">
+        <span class="tab-icon">💻</span>
+        macOS
+      </button>
+      <button class="tab-btn" data-tab="windows">
+        <span class="tab-icon">🪟</span>
+        Windows
+      </button>
+    </div>
+
+    <!-- iOS Tab -->
+    <div class="tab-content active" id="ios">
+      <div class="step-row">
+        <div class="step-number">1</div>
+        <div class="step-details">
+          <h3 class="step-title">Open Safari</h3>
+          <p class="step-desc">Open <b>Safari</b> on your iOS device and head to <strong>life-architect.pages.dev</strong>. Note: Chrome on iOS does not support home screen apps.</p>
+          <div class="start-btn-wrap" style="text-align: left;"><a class="start-btn" href="https://life-architect.pages.dev/" target="_blank">Open App Link ↗</a></div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">2</div>
+        <div class="step-details">
+          <h3 class="step-title">Tap the Share Button</h3>
+          <p class="step-desc">Tap the Share icon at the bottom center of the Safari menubar.</p>
+          <div class="visual-hint">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Look for this Share icon
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">3</div>
+        <div class="step-details">
+          <h3 class="step-title">Select "Add to Home Screen"</h3>
+          <p class="step-desc">Scroll down the share menu list and tap <b>Add to Home Screen</b>, then tap <b>Add</b> in the top right corner.</p>
+          <div class="visual-hint">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            The app will now behave perfectly natively from your home screen!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Android Tab -->
+    <div class="tab-content" id="android">
+      <div class="step-row">
+        <div class="step-number">1</div>
+        <div class="step-details">
+          <h3 class="step-title">Open Chrome</h3>
+          <p class="step-desc">Open Google <b>Chrome</b> and navigate to <strong>life-architect.pages.dev</strong>.</p>
+          <div class="start-btn-wrap" style="text-align: left;"><a class="start-btn" href="https://life-architect.pages.dev/" target="_blank">Open App Link ↗</a></div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">2</div>
+        <div class="step-details">
+          <h3 class="step-title">Tap the Menu</h3>
+          <p class="step-desc">Tap the 3-dot menu icon in the top right corner of the browser.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">3</div>
+        <div class="step-details">
+          <h3 class="step-title">Install App</h3>
+          <p class="step-desc">Select <b>"Install App"</b> or <b>"Add to Home Screen"</b> from the menu and confirm.</p>
+          <div class="visual-hint" style="color:var(--purple);">
+            ✨ The app is now installed and accessible from your app drawer!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- macOS Tab -->
+    <div class="tab-content" id="mac">
+      <div class="step-row">
+        <div class="step-number">1</div>
+        <div class="step-details">
+          <h3 class="step-title">Open App in Safari or Chrome</h3>
+          <p class="step-desc">Go to <strong>life-architect.pages.dev</strong> in your preferred browser.</p>
+          <div class="start-btn-wrap" style="text-align: left;"><a class="start-btn" href="https://life-architect.pages.dev/" target="_blank">Open App Link ↗</a></div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">2</div>
+        <div class="step-details">
+          <h3 class="step-title">If using Safari</h3>
+          <p class="step-desc">Click <b>File</b> in the top menu bar, then click <b>"Add to Dock"</b>.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">3</div>
+        <div class="step-details">
+          <h3 class="step-title">If using Chrome</h3>
+          <p class="step-desc">Look for the <b>Install Icon</b> (it looks like a screen with a down arrow) in the right side of the URL bar and click it.</p>
+          <div class="visual-hint">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><polyline points="8 12 12 16 16 12"/></svg>
+            Click the install icon in your address bar
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windows Tab -->
+    <div class="tab-content" id="windows">
+      <div class="step-row">
+        <div class="step-number">1</div>
+        <div class="step-details">
+          <h3 class="step-title">Open Chrome or Edge</h3>
+          <p class="step-desc">Navigate to <strong>life-architect.pages.dev</strong>.</p>
+          <div class="start-btn-wrap" style="text-align: left;"><a class="start-btn" href="https://life-architect.pages.dev/" target="_blank">Open App Link ↗</a></div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">2</div>
+        <div class="step-details">
+          <h3 class="step-title">Click the Install Icon</h3>
+          <p class="step-desc">Look at the far right of your address bar. You will see an <b>App Available</b> or <b>Install</b> icon.</p>
+          <div class="visual-hint">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><polyline points="8 12 12 16 16 12"/></svg>
+            Located directly inside your URL search bar
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-number">3</div>
+        <div class="step-details">
+          <h3 class="step-title">Pin to Taskbar</h3>
+          <p class="step-desc">Once installed, right click the app icon in your taskbar and select <b>"Pin to taskbar"</b> for instant access.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="fat-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
+        <img src="assets/logo.png" style="width: 28px; height: 28px; object-fit: contain;">
+        <span style="font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 18px; color: var(--text);">Life Architect</span>
+      </div>
+      <p style="color: var(--muted); font-size: 15px; line-height: 1.6; padding-right: 20px;">
+        Tasks, habits, routines, journal and AI — all in one beautiful private app.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="https://life-architect.pages.dev">iOS App</a></li>
+        <li><a href="https://life-architect.pages.dev">Android App</a></li>
+        <li><a href="https://life-architect.pages.dev">Windows App</a></li>
+        <li><a href="https://life-architect.pages.dev">macOS App</a></li>
+        <li><a href="install.html" style="color: var(--purple-light); font-weight: 600;">How to install →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="https://ig.me/m/lifearchitect.app" target="_blank">Talk to Architect</a></li>
+        <li><a href="mailto:support.lifearchitect@gmail.com?subject=Bug Report">Report a Bug</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+      <h4 style="margin-top: 32px;">Social</h4>
+      <ul>
+        <li>
+          <a href="https://instagram.com/lifearchitect.app" target="_blank" style="display: flex; align-items: center; gap: 8px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            Instagram
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copyright">
+      &copy; 2026 Life ARCHITECT. All rights reserved. <span style="margin-left: 10px; color: var(--text); opacity: 0.7; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; background: rgba(15, 23, 42, 0.06); padding: 3px 10px; border-radius: 6px; vertical-align: middle; border: 1px solid rgba(15, 23, 42, 0.1);">In Beta</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Tab switching logic
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active from all
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      // Add active to clicked
+      btn.classList.add('active');
+      const targetId = btn.getAttribute('data-tab');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
