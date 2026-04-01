@@ -595,29 +595,29 @@
   }
   @media (max-width: 768px) {
     nav {
-      left: calc(12px + env(safe-area-inset-left));
-      right: calc(12px + env(safe-area-inset-right));
-      padding: 10px 16px;
-      margin-top: 8px;
+      padding: 14px 24px;
     }
     .pricing-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     nav { padding: 14px 20px; }
     .btn-gallery { display: none; }
-    .nav-name { font-size: 13px; }
-    .nav-cta { padding: 8px 16px; font-size: 12px; }
-    .feature-grid { grid-template-columns: 1fr; }
-    .hero-title { font-size: clamp(32px, 9vw, 44px); }
-    .hero { min-height: 88vh; padding: 96px 18px 72px; }
+    .nav-name { font-size: 15px; }
+    .nav-cta { padding: 10px 18px; font-size: 13px; }
+    .feature-grid { grid-template-columns: 1fr; gap: 16px; }
+    .hero-title { font-size: clamp(28px, 11vw, 40px); }
+    .hero { min-height: 85vh; padding: 110px 20px 60px; }
     .hero-badge { font-size: 11px; padding: 8px 20px; margin-bottom: 18px; }
-    .hero-sub { font-size: clamp(24px, 8vw, 34px); margin-bottom: 14px; }
-    .hero-desc { font-size: 15px; margin-bottom: 28px; max-width: 100%; }
-    .feature-overview { padding: 72px 18px 96px; }
-    .feature-overview-card { padding: 24px; }
-    .mini-feature { padding: 18px 16px; }
-    .download-cta { padding: 84px 18px 72px; }
-    .cta-title { font-size: clamp(28px, 9vw, 40px); }
+    .hero-sub { font-size: clamp(22px, 8vw, 32px); margin-bottom: 16px; line-height: 1.2; }
+    .hero-desc { font-size: 16px; margin-bottom: 32px; max-width: 100%; line-height: 1.6; }
+    .feature-overview { padding: 60px 16px 80px; }
+    .feature-overview-card { padding: 24px 16px; border-radius: 20px; }
+    .feature-overview-title { font-size: clamp(28px, 8vw, 40px); }
+    .mini-feature { padding: 20px 16px; }
+    .download-cta { padding: 60px 20px; }
+    .cta-title { font-size: clamp(30px, 9vw, 40px); }
+    .gallery-header { flex-direction: column; gap: 16px; text-align: center; }
+    .support-card { flex-direction: column !important; border-radius: 24px !important; padding: 20px 16px !important; gap: 8px !important; }
   }
 </style>
 </head>
@@ -732,10 +732,10 @@
 </section>
 
 <!-- Support -->
-<div class="reveal" style="margin-top: 80px; text-align: center; width: 100%;">
-  <div style="display: inline-flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); padding: 12px 24px; border-radius: 100px; backdrop-filter: blur(10px);">
+<div class="reveal" style="margin-top: 80px; text-align: center; width: 100%; padding: 0 16px;">
+  <div class="support-card" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); padding: 16px 28px; border-radius: 100px; backdrop-filter: blur(10px); max-width: 100%;">
     <span style="font-size: 13px; color: var(--muted); letter-spacing: 0.05em; font-weight: 500;">Customer Support:</span>
-    <a href="mailto:support.lifearchitect@gmail.com" style="font-size: 13px; color: var(--purple-light); text-decoration: none; font-weight: 500;">support.lifearchitect@gmail.com</a>
+    <a href="mailto:support.lifearchitect@gmail.com" style="font-size: 14px; color: var(--purple-light); text-decoration: none; font-weight: 600; word-break: break-all;">support.lifearchitect@gmail.com</a>
   </div>
 </div>
 
